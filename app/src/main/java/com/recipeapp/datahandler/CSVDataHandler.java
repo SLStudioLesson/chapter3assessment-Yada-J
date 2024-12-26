@@ -78,10 +78,14 @@ public class CSVDataHandler implements DataHandler {
 
         writer = new BufferedWriter(new FileWriter(filePath, true));
 
+        try {
             //新しいレシピを書き込む
             writer.write(writeString);
             //書き込み後に改行する
             writer.newLine();
+        } finally {
+            writer.close();
+        }
     }
 
     public ArrayList<Recipe> searchData(String keyword) {
